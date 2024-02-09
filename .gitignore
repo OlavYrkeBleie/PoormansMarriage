@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.env
+.env.local
+*.log
+.DS_Store
+data/
+!data/.gitkeep
+coverage/
+.vite/
+apps/frontend/dist/
+apps/backend/dist/
+_build/
+.vscode/
+.idea/
+*.sqlite
+*.sqlite-journal
