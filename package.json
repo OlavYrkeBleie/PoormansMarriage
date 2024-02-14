@@ -1,0 +1,36 @@
+{
+  "name": "poormans-marriage",
+  "version": "0.9.0",
+  "private": true,
+  "description": "Self-hostable shared household expense tracker",
+  "license": "MIT",
+  "workspaces": [
+    "apps/backend",
+    "apps/frontend",
+    "apps/desktop"
+  ],
+  "scripts": {
+    "dev": "npm-run-all --parallel dev:backend dev:frontend",
+    "dev:backend": "npm -w @pm/backend run dev",
+    "dev:frontend": "npm -w @pm/frontend run dev",
+    "build": "npm -w @pm/backend run build && npm -w @pm/frontend run build",
+    "start": "npm -w @pm/backend run start",
+    "lint": "npm -w @pm/backend run lint && npm -w @pm/frontend run lint",
+    "typecheck": "npm -w @pm/backend run typecheck && npm -w @pm/frontend run typecheck",
+    "test": "npm -w @pm/backend run test",
+    "db:migrate": "npm -w @pm/backend run db:migrate",
+    "db:seed": "npm -w @pm/backend run db:seed",
+    "seed:demo": "tsx scripts/seed-demo-data.ts",
+    "desktop:icons": "npm -w @pm/desktop run build:icons",
+    "desktop:dev": "npm -w @pm/desktop run dev",
+    "desktop:make": "npm run build && npm -w @pm/desktop run dist"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
