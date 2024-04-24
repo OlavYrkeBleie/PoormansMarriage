@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DATA_DIR=/app/data
+      - JWT_SECRET=${JWT_SECRET:?set JWT_SECRET in .env}
+      - DEFAULT_CURRENCY=${DEFAULT_CURRENCY:-NOK}
+      - OCR_LANGS=${OCR_LANGS:-nor+eng}
+    restart: unless-stopped
