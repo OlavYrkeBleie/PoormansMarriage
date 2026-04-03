@@ -1,0 +1,66 @@
+{
+  "name": "@pm/desktop",
+  "version": "0.9.0",
+  "private": true,
+  "description": "Desktop wrapper for Poorman's Marriage",
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "dev": "cross-env PM_DESKTOP_DEV=1 electron .",
+    "build:icons": "node scripts/build-icons.cjs",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "electron": "^31.6.0",
+    "electron-builder": "^25.0.5",
+    "png-to-ico": "^2.1.8",
+    "sharp": "^0.33.5"
+  },
+  "build": {
+    "appId": "com.olavyrkebleie.poormansmarriage",
+    "productName": "Poorman's Marriage",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.cjs",
+      "preload.cjs",
+      "build/**",
+      "../../apps/backend/dist/**",
+      "../../apps/backend/drizzle/**",
+      "../../apps/backend/package.json",
+      "../../apps/frontend/dist/**",
+      "../../package.json",
+      "!**/node_modules/**/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!**/*.{ts,map}"
+    ],
+    "asarUnpack": [
+      "../../apps/backend/**"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Poorman's Marriage"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "build/icon.icns",
+      "category": "public.app-category.finance"
+    },
+    "linux": {
+      "target": ["AppImage"],
+      "icon": "build/icon.png",
+      "category": "Office"
+    }
+  }
+}
