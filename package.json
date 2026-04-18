@@ -15,7 +15,6 @@
     "dev:frontend": "npm -w @pm/frontend run dev",
     "build": "npm -w @pm/backend run build && npm -w @pm/frontend run build",
     "start": "npm -w @pm/backend run start",
-    "lint": "npm -w @pm/backend run lint && npm -w @pm/frontend run lint",
     "typecheck": "npm -w @pm/backend run typecheck && npm -w @pm/frontend run typecheck",
     "test": "npm -w @pm/backend run test",
     "db:migrate": "npm -w @pm/backend run db:migrate",
