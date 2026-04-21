@@ -13,9 +13,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      # npm ci misses platform-specific optional deps when the lock file was
-      # generated on a different OS (npm issue #4828). Use npm install so the
-      # platform rollup/esbuild binaries are picked up on Linux.
+      # Regenerate lock on the runner's OS so platform-specific optional
+      # deps (rollup, esbuild, sharp) resolve for Linux. Avoids npm #4828.
+      - run: rm -f package-lock.json
       - run: npm install --no-audit --no-fund
       - run: npm run typecheck
       - run: npm run test
