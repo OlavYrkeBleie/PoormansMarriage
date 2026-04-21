@@ -17,19 +17,34 @@ Built around the idea that you have one shared card, recurring bills that arrive
 
 Pick the path that fits you.
 
-### Desktop app (easiest - double-click, no terminal)
+### Desktop app (build the .exe yourself)
 
-Grab the installer for your OS from the [Releases page](https://github.com/OlavYrkeBleie/PoormansMarriage/releases):
+Prebuilt installers are not published to Releases yet. To make one from source:
+
+```bash
+git clone https://github.com/OlavYrkeBleie/PoormansMarriage.git
+cd PoormansMarriage
+npm install
+npm run build
+npm -w @pm/desktop run dist
+```
+
+Output lands in `apps/desktop/release/`:
 
 - Windows: `Poormans-Marriage-Setup-<version>.exe`
 - macOS: `Poormans-Marriage-<version>.dmg`
 - Linux: `Poormans-Marriage-<version>.AppImage`
 
-Launch, register two users on first run, done. The backend runs inside the app on a loopback port. Data lives at:
+Launch the installer, register two users on first run. The backend runs inside the app on a loopback port. Data lives at:
 
 - Windows: `%APPDATA%\poormans-marriage\data`
 - macOS: `~/Library/Application Support/poormans-marriage/data`
 - Linux: `~/.config/poormans-marriage/data`
+
+If electron-builder can't find Electron in a workspace install, pin the version:
+```bash
+npx electron-builder --win --config.electronVersion=31.7.7
+```
 
 ### Server mode (one command)
 

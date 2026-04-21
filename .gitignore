@@ -15,3 +15,7 @@ _build/
 .idea/
 *.sqlite
 *.sqlite-journal
+
+# electron-builder output
+apps/desktop/release/
+apps/desktop/build/icon-*.png
