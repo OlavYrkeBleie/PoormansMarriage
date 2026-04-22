@@ -33,7 +33,19 @@ export async function build() {
   });
 
   await app.register(cors, {
-    origin: env.isProd ? false : ["http://localhost:5173"],
+    // Prod: same-origin only (frontend served from the same Fastify process).
+    // Dev: allow the Vite dev server on any LAN IP so a phone on the same
+    // Wi-Fi (pointing at http://192.168.x.y:5173/) can call /api/* via proxy.
+    origin: env.isProd
+      ? false
+      : (origin, cb) => {
+          if (!origin) return cb(null, true); // same-origin / non-browser
+          try {
+            const u = new URL(origin);
+            if (u.port === "5173") return cb(null, true);
+          } catch { /* fall through */ }
+          cb(null, false);
+        },
     credentials: true,
   });
   await app.register(cookie, { secret: env.JWT_SECRET });
