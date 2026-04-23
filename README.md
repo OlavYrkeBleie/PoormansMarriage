@@ -145,3 +145,5 @@ MIT. See [LICENSE](LICENSE).
 ## Contributing
 
 PRs welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for the dev loop.
+
+MIT License
