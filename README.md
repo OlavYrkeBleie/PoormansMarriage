@@ -75,7 +75,7 @@ npm run db:seed
 npm run dev
 ```
 
-Full step-by-step with troubleshooting: [docs/SETUP.md](docs/SETUP.md).
+Full step-by-step with troubleshooting: [docs/SETUP.md](docs/SETUP.md). Common questions: [docs/FAQ.md](docs/FAQ.md).
 
 ## Using it on your phone
 
